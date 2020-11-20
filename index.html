@@ -1,0 +1,237 @@
+<html>
+
+<head>
+    <title>Calculator</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+
+    <script>
+        let num1 = 0;
+        let num2 = 0;
+        let oper = "";
+        let numCount = 1;
+
+
+        function getNum(clicked_id) {
+            if (numCount == 1) {
+                let i = document.getElementById("result_id").innerText;
+                let new_number = document.getElementById(clicked_id).value;
+                var currentNumber = Number(i + new_number);
+                document.getElementById("result_id").innerText = currentNumber;
+                num1 = currentNumber;
+                console.log(num1);
+            } else {
+                let i = document.getElementById("result_id").innerText;
+                let new_number = document.getElementById(clicked_id).value;
+                var currentNumber = Number(i + new_number);
+                document.getElementById("result_id").innerText = currentNumber;
+                num2 = currentNumber;
+                console.log(num2);
+            }
+        }
+
+        function addCommand(cmd) {
+            oper = cmd;
+            document.getElementById("result_id").innerText = "";
+            numCount = 2;
+            console.log(oper);
+        }
+
+        function clean() {
+            document.getElementById("result_id").innerText = "";
+            num1 = 0;
+            num2 = 0;
+            oper = "";
+            numCount = 1;
+        }
+
+        function calcResult() {
+            if (oper == '-') {
+                result = num1 - num2;
+                document.getElementById("result_id").innerText = result;
+                console.log(result);
+            } else if (oper == '+') {
+                result = num1 + num2;
+                document.getElementById("result_id").innerText = result;
+                console.log(result);
+            } else if (oper == '/') {
+                result = num1 / num2;
+                document.getElementById("result_id").innerText = result;
+                console.log(result);
+            } else if (oper == '*') {
+                result = num1 * num2;
+                document.getElementById("result_id").innerText = result;
+                console.log(result);
+            } else {
+                return
+            }
+
+            let j = document.getElementById("result_id").innerText;
+            num1 = j;
+            num2 = 0;
+            oper = "";
+            numCount = 2;
+        }
+    </script>
+    <style>
+        @font-face {
+            font-family: "Open Sans";
+            src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"), url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+        }
+        
+        body {
+            background-color: #b3caca
+        }
+        
+        #calculator_outline {
+            max-width: 410px;
+            min-width: 410px;
+            background-color: black;
+            color: #D4D4D2;
+            border-radius: 20px;
+            padding: 10px 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .button_basic {
+            border-radius: 50%;
+            background-color: #505050;
+            border-color: #505050;
+            font-size: 34px;
+            color: white;
+            height: 80px;
+            width: 80px;
+        }
+        
+        .button_basic:hover {
+            background-color: #272626;
+            color: white;
+            border-color: #272626;
+        }
+        
+        .button_action {
+            border-radius: 50%;
+            background-color: #FF9500;
+            border-color: #FF9500;
+            font-size: 34px;
+            color: white;
+            height: 80px;
+            width: 80px;
+        }
+        
+        .button_action:hover {
+            background-color: #a35f00;
+            border-color: #a35f00;
+            color: white;
+        }
+        
+        .button_top {
+            border-radius: 50%;
+            background-color: #a5a5a2;
+            border-color: #a5a5a2;
+            font-size: 34px;
+            color: black;
+            height: 80px;
+            width: 80px;
+        }
+        
+        .button_top:hover {
+            background-color: #747474;
+            color: black;
+            border-color: #747474;
+        }
+        
+        #result_id {
+            margin-top: 50px;
+            font-size: 100px;
+            text-align: right;
+            padding: 5px 20px 5px 20px;
+            display: block;
+            margin-bottom: 0;
+            color: white;
+            height: 130px;
+        }
+        
+        .result_line {
+            text-align: right;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+        
+        #num0 {
+            width: 190px;
+            border-radius: 30px;
+        }
+        
+        #calculator_outline .row {
+            margin-bottom: 15px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <H1> Calculator</h1>
+
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-2 col-sm-12"></div>
+
+            <div class="col-lg-6 col-md-8 col-sm-12">
+
+                <div id="calculator_outline">
+
+                    <div class="row result_line">
+                        <p id="result_id" class="container"></p>
+                    </div>
+
+                    <div class="row line align-items-center align-middle">
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_top" onclick="clean()">AC</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_top" value="">+/-</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_top" value="=">%</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_action" onclick="addCommand('/')">&#247</button></div>
+                    </div>
+                    <div class="row line align-items-center align-middle">
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="7" id="num7" onclick="getNum(this.id)">7</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="8" id="num8" onclick="getNum(this.id)">8</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="9" id="num9" onclick="getNum(this.id)">9</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_action" onclick="addCommand('*')">&#215</button></div>
+                    </div>
+                    <div class="row line align-items-center align-middle">
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="4" id="num4" onclick="getNum(this.id)">4</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="5" id="num5" onclick="getNum(this.id)">5</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="6" id="num6" onclick="getNum(this.id)">6</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_action" onclick="addCommand('-')">-</button></div>
+                    </div>
+                    <div class="row line align-items-center align-middle">
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="1" id="num1" onclick="getNum(this.id)">1</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="2" id="num2" onclick="getNum(this.id)">2</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" value="3" id="num3" onclick="getNum(this.id)">3</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_action" onclick="addCommand('+')">+</button></div>
+                    </div>
+                    <div class="row line align-items-center align-middle">
+                        <div class="col-6"><button type="button" class="btn btn-lg btn-block button_basic" id="num0" value="0" onclick="getNum(this.id)">0</button></div>
+                        <div class="col-3"><button type="button" class="btn btn-lg btn-block button_basic" id="comma" value="." onclick="getNum(this.id)">,</button></div>
+                        <div class="col-3"><button type="button " class="btn btn-lg btn-block button_action " onclick="calcResult() ">=</button></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-2 col-sm-12 "></div>
+        </div>
+    </div>
+
+
+
+    </div>
+</body>
+
+</html>
